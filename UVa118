@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+const int x[4] = {1, 0, -1, 0}, y[4] = {0, 1, 0, -1};
+const char Direction[4] = { 'E', 'N', 'W', 'S' };
+
+int CtoI_D(char c){
+	switch(c){
+		case 'E':
+			return 0;
+		case 'N':
+			return 1;
+		case 'W':
+			return 2;
+		case 'S':
+			return 3;
+	}
+}
+int main(){
+	int i, j, cox, coy;//coordinate
+	char charD, side;
+	cin >> i >> j;
+	while(cin >> cox >> coy >> charD){
+		int intD = CtoI_D(charD);
+		bool lost = false;
+		while(cin >> side, cin.get()!='\n'){
+			switch(side){
+				case 'L':
+					intD = (intD+1)%4;
+					break;
+				case 'R':
+					intD = (intD+3)%4;
+					break;
+				case 'F':
+					cox += x[intD];
+					coy += y[intD];
+					break;
+			}
+			if(cox>i || coy>j || cox<0 || coy<0){
+				lost = true;
+				cox -= x[intD];
+				coy -= y[intD];
+				break;
+			}
+		}
+		cout << cox <<' '<< coy <<' '<< Direction[intD];
+		if(lost) cout <<' '<<"LOST";
+		cout << endl;
+	}
+}
