@@ -7,14 +7,10 @@ const int coordinate[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 const char Direction[4] = { 'E', 'N', 'W', 'S' };
 int CtoI_D(char c){
 	switch(c){
-		case 'E':
-			return 0;
-		case 'N':
-			return 1;
-		case 'W':
-			return 2;
-		case 'S':
-			return 3;
+		case 'E': return 0;
+		case 'N': return 1;
+		case 'W': return 2;
+		case 'S': return 3;
 	}
 }
 int main(){
