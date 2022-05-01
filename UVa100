@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int function(int x){
+	int y=1;
+	while(x-1){
+		if(x%2)	x=3*x+1;
+		else x/=2;
+		y++;
+	}
+	return y;
+}
+
+int main() {
+	int i, j;
+	while(cin >> i >> j){
+		int temp, maxF=0;
+		for(temp=min(i, j); temp<=max(i,j); temp++)
+			maxF = max(maxF, function(temp));
+		cout << i <<' '<< j <<' '<< maxF << endl;
+	}
+	return 0;
+}
