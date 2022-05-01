@@ -1,2 +1,1 @@
 # UVa Online Judge
-##cpp
