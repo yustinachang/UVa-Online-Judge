@@ -1,9 +1,10 @@
 #include <iostream>
+#include <string>
 using namespace std;
+#define comax 55//coordinate_max
 
-const int x[4] = {1, 0, -1, 0}, y[4] = {0, 1, 0, -1};
+const int coordinate[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 const char Direction[4] = { 'E', 'N', 'W', 'S' };
-
 int CtoI_D(char c){
 	switch(c){
 		case 'E':
@@ -17,14 +18,17 @@ int CtoI_D(char c){
 	}
 }
 int main(){
-	int i, j, cox, coy;//coordinate
-	char charD, side;
+	int i, j, cox, coy;
+	char charD;
+	string side;
+	bool scent[comax][comax] = { false };//scent_map
 	cin >> i >> j;
 	while(cin >> cox >> coy >> charD){
 		int intD = CtoI_D(charD);
 		bool lost = false;
-		while(cin >> side, cin.get()!='\n'){
-			switch(side){
+		cin >> side;
+		for(int temp = 0 ; temp < side.length() ; temp++){
+			switch(side[temp]){
 				case 'L':
 					intD = (intD+1)%4;
 					break;
@@ -32,15 +36,18 @@ int main(){
 					intD = (intD+3)%4;
 					break;
 				case 'F':
-					cox += x[intD];
-					coy += y[intD];
+					cox += coordinate[intD][0];
+					coy += coordinate[intD][1];
 					break;
 			}
 			if(cox>i || coy>j || cox<0 || coy<0){
-				lost = true;
-				cox -= x[intD];
-				coy -= y[intD];
-				break;
+				cox -= coordinate[intD][0];
+				coy -= coordinate[intD][1];
+				if( !scent[cox][coy] ){
+					scent[cox][coy] = true;
+					lost = true;
+					break;
+				}
 			}
 		}
 		cout << cox <<' '<< coy <<' '<< Direction[intD];
