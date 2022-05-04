@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="20220427.css">
 </head>
 <body>
-	<div id="wrap">
+	<div id="warp">
 		<div id="header">
 			<ul>
 				<li class="aboutus"><a href="#">關於我們</a></li>
@@ -60,7 +60,7 @@
 				<li class="coupon">折價券</li>
 				<li class="member">會員獨享</li>
 				<li class="free">免費宅配</li>
-			</ul>
+			</ul>			
 		</div>
 
 		<div id="footer">
